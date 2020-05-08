@@ -1,0 +1,25 @@
+<html>
+<head>
+  <script src="topola.js"></script>
+  <script>
+    // Sample GEDCOM data.
+    var gedcomUrl = 'https://raw.githubusercontent.com/PeWu/topola/master/demo/data/family.ged';
+    // Allow substituting the Topola Viewer URL for testing purposes.
+    var topolaUrl = location.hash.substr(1) || 'https://pewu.github.io/topola-viewer/#';
+    // Set iframe SRC once the page is loaded.
+    window.onload = () => {
+      var frame = document.getElementById('topolaFrame');
+      frame.setAttribute('src', topolaUrl + '/view?embedded=true');
+      // Start loading data once the iframe is loaded.
+      frame.onload = () => loadData(gedcomUrl, 'topolaFrame');
+    }
+  </script>
+</head>
+<body>
+  <p>Showing Topola Viewer in an iframe below:
+  <iframe
+    id="topolaFrame"
+    style="width: 100%; height: 800px;"
+  </iframe>
+</body>
+</html>
